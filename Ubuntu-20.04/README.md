@@ -8,7 +8,7 @@
 
 # Option 2 - Download, Extract, Edit, and Recreate the ISO
 ## Download the current ISO
-https://www.otherdata.com/ubuntu-20.04.3-live-server-salt-amd64.iso (docker, salt-minion| md5sum 31abbaf496e54be101ca282a17725293
+[ubuntu-20.04.3-live-server-salt-amd64.iso](https://www.otherdata.com/custom-images/ubuntu-20.04.3-live-server-salt-amd64.iso) (docker, salt-minion| md5sum 31abbaf496e54be101ca282a17725293
 
 ## Extract ISO
 ```
