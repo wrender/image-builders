@@ -19,7 +19,7 @@ cd image-builders/CentOS-7;
 livecd-creator \
 --verbose \
 --config=./kickstart-7.ks \
---fslabel=CentOS7LiveOS \
+--fslabel=CentOS-7-x86_64-Minimal-Live-2009.iso \
 --cache=/var/cache/live
 ```
 - Your iso should be created
