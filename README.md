@@ -1,6 +1,10 @@
-# rancherstartup
+# Image Builders
 
-Simple bash scripts to build Custom image for use with Rancher/Kubernetes
+Simple bash scripts to build Custom images for use with Rancher/Kubernetes/SaltStack. LiveOS with option to install to disk.
+- Images for Fedora CoreOS, CentOS 7/8, and Ubuntu 20.04
+- Images include docker, salt-minion
+- Salt-minion systemd service is enabled by default
+- Docker systemd service is disabled by default (to be configured by SaltStack)
 
 ## Rancher-startup.sh
 
