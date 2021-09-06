@@ -132,7 +132,7 @@ xorriso \
    -iso-level 3 \
    -full-iso9660-filenames \
    -volid "Ubuntu from scratch" \
-   -output "../ubuntu-from-scratch.iso" \
+   -output "../ubuntu-20.04.3-live-server-salt-amd64.iso" \
    -eltorito-boot boot/grub/bios.img \
       -no-emul-boot \
       -boot-load-size 4 \
