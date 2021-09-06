@@ -27,7 +27,7 @@ firewall --disabled
 repo --name="base" --baseurl=http://mirror.centos.org/centos/7/os/x86_64/
 repo --name="updates" --baseurl=http://mirror.centos.org/centos/7/updates/x86_64/
 repo --name="extra" --baseurl=http://mirror.centos.org/centos/7/extras/x86_64/
-repo --name="epel" --baseurl=http://mirror.mrjester.net/fedora/epel/7/x86_64/
+repo --name="epel" --baseurl=http://mirror.its.dal.ca/epel/7/x86_64/
 repo --name="docker" --baseurl=http://download.docker.com/linux/centos/7/x86_64/stable/
 
 %packages --excludedocs --multilib --instLangs en_US
@@ -55,38 +55,17 @@ shim-x64
 
 
 %post --log=/root/ks-post.log
+# Install SaltStack
+rpm --import https://repo.saltproject.io/py3/redhat/7/x86_64/latest/SALTSTACK-GPG-KEY.pub
+curl -fsSL https://repo.saltproject.io/py3/redhat/7/x86_64/latest.repo | sudo tee /etc/yum.repos.d/salt.repo
+yum install -y salt-minion
 
-# Create a script to grab the Rancher Startup Script
-cat << EOF > /root/runonce.sh
-#!/bin/bash
-
-if [ ! -f /root/registered.lock ]
-then
-    wget http://192.168.1.188/myrepo/rancher-startup.sh -O /root/rancher-startup.sh
-    chmod +x /root/rancher-startup.sh
-    touch /root/registered.lock
-    sh /root/rancher-startup.sh
-    exit
-fi
+# Point to master
+cat <<EOF > /etc/salt/minion.d/settings.conf
+master: my.salt.masterhost
+grains:
+  roles:
+    - k8s
 EOF
-chmod +x /root/runonce.sh
-
-# Service to get configuration
-cat << EOF > /etc/systemd/system/runonce.service
-[Unit]
-Description=RunOnce
-Requires=network-online.target
-After=network-online.target
-
-[Service]
-ExecStart=/root/runonce.sh
-
-
-[Install]
-WantedBy=multi-user.target
-EOF
-chmod 664 /etc/systemd/system/runonce.service
-systemctl enable runonce
 
 %end 
-
