@@ -1,0 +1,29 @@
+ref: otherdata/${basearch}/coreos/stable
+include: fedora-coreos-config/manifest.yaml
+
+packages:
+- hdparm
+- kernel-devel
+- gcc
+- make
+- tar
+- wget
+
+repos:
+- fedora
+
+postprocess:
+  # remove the "fedora" ostree remote
+  - |
+    #!/usr/bin/env bash
+    set -xeuo pipefail
+    ls -la /
+    ls -la /etc/ostree/
+    rm /etc/ostree/remotes.d/fedora.conf
+    cd /var/opt
+    wget http://192.168.1.188/myrepo/myri_snf-3.0.25.50927_0b38e91d6-3486.x86_64.tgz -O ./myri_snf-3.0.25.50927_0b38e91d6-3486.x86_64.tgz
+    tar -zxvf ./myri_snf-3.0.25.50927_0b38e91d6-3486.x86_64.tgz
+    mv myri_snf-3.0.25.50927_0b38e91d6-3486.x86_64 snf
+    cd /var/opt/snf
+    sbin/rebuild.sh
+    /var/opt/snf/sbin/myri_start_stop start
