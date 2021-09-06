@@ -12,6 +12,7 @@ yum install -y \
     hfsplus-tools
 ```
 - Git clone image-builders `git clone https://github.com/wrender/image-builders.git`
+- Customize kickstart-7.ks as needed
 - Run livecd-creator
 ```
 cd image-builders/CentOS-7;
