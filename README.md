@@ -4,8 +4,10 @@ Simple bash scripts to build Custom OS images for use with Rancher/Kubernetes/Sa
 
 - Images for [Fedora CoreOS](https://github.com/wrender/image-builders/tree/main/CoreOS), [CentOS 7](https://github.com/wrender/image-builders/tree/main/CentOS-7), [CentOS 8](https://github.com/wrender/image-builders/tree/main/CentOS-8) and [Ubuntu 20.04](https://github.com/wrender/image-builders/tree/main/Ubuntu-20.04)
 - Images include docker, salt-minion
+- LiveOS and Persistant
 - Salt-minion systemd service is enabled by default
 - Docker systemd service is disabled by default (to be configured by SaltStack)
+- rke-docker SaltStack Formula - Support Docker LiveOS/RAMDISK, Supports RKE
 
 ## Rancher-startup.sh
 
@@ -19,15 +21,6 @@ Usage:
 2. Modify the cluster, hostname matching if statement, rancher token etc.
 3. GPG encrypt your Rancher token: `echo "7cgwjqr68tdmrhht2nl5jh5v22gqscq9fctn8pqfq2xdqwgzv47lhn" | gpg --encrypt -r RancherStartup --armor`
 4. TODO: Convert to SaltStack formula 
-
-Supports: Fedora CoreOS, Ubuntu & CentOS 7/8
-
-## Ubuntu 20.04 Image
-1. Install an Ubuntu 20.04 server
-2. As root download ubuntu-create-iso.sh and ubuntu-chroot.sh to /root/
-3. Modify ubuntu-chroot.sh to customize security/password settings
-4. As root run /root/ubuntu-create-iso.sh
-5. Copy the iso file in /root/live-ubuntu-from-scratch/ to your http server. 
 
 ## CentOS 7/8  Image Instructions
 1.  Edit the kickstart file and edit the path to your webserver where you will host RancherStartup
