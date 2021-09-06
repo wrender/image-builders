@@ -2,7 +2,7 @@
 - Edit settings in ubuntu-chroot.sh as needed. (password, salt etc..)
 - Run the script ubuntu-create-iso.sh
 
-# Option 2 - Download, Extracting, editing, and recreating the ISO
+# Option 2 - Download, Extract, Edit, and Recreate the ISO
 ## Download the current ISO
 https://www.otherdata.com/ubuntu-20.04.3-live-server-salt-amd64.iso (docker, salt-minion| md5sum 31abbaf496e54be101ca282a17725293
 
