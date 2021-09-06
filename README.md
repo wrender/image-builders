@@ -1,7 +1,7 @@
 # Image Builders
 
 Simple bash scripts to build Custom images for use with Rancher/Kubernetes/SaltStack. LiveOS with option to install to disk.
-- Images for [Fedora CoreOS]:https://github.com/wrender/image-builders/tree/main/CoreOS, CentOS 7/8, and Ubuntu 20.04
+- Images for [Fedora CoreOS](https://github.com/wrender/image-builders/tree/main/CoreOS),[CentOS 7](https://github.com/wrender/image-builders/tree/main/CentOS-7),[CentOS 8](https://github.com/wrender/image-builders/tree/main/CentOS-8) and [Ubuntu 20.04](https://github.com/wrender/image-builders/tree/main/Ubuntu-20.04)
 - Images include docker, salt-minion
 - Salt-minion systemd service is enabled by default
 - Docker systemd service is disabled by default (to be configured by SaltStack)
