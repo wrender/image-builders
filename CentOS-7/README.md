@@ -1,3 +1,5 @@
+# Download Current pre-built Image
+https://www.otherdata.com/custom-images/CentOS-7-x86_64-Minimal-Live-2009.iso (docker, salt-minion) | md5sum c471c7846453550dde5d6f214bd0b66b
 # Create a CentOS 7 LiveCD
 - Install a CentOS 7 minimal on a server or in a VM to build the images on
 - If using a VM, ensure Nested VT-x is enabled
