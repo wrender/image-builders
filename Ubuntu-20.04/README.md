@@ -1,4 +1,7 @@
-# Option 1 - Create the ISO
+# Download Current Pre-Built ISO
+[ubuntu-20.04.3-live-server-salt-amd64.iso](https://www.otherdata.com/custom-images/ubuntu-20.04.3-live-server-salt-amd64.iso) (docker, salt-minion| md5sum 31abbaf496e54be101ca282a17725293
+
+# Create the ISO
 ### Requirements
 - An Ubuntu 20.04 Desktop or Server to run the script on
 ### Steps
@@ -7,8 +10,8 @@
 - Run the script ubuntu-create-iso.sh
 
 # Option 2 - Download, Extract, Edit, and Recreate the ISO
-## Download the current ISO
-[ubuntu-20.04.3-live-server-salt-amd64.iso](https://www.otherdata.com/custom-images/ubuntu-20.04.3-live-server-salt-amd64.iso) (docker, salt-minion| md5sum 31abbaf496e54be101ca282a17725293
+
+Download the ISO from the link above.
 
 ## Extract ISO
 ```
