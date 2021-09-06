@@ -22,18 +22,6 @@ Usage:
 3. GPG encrypt your Rancher token: `echo "7cgwjqr68tdmrhht2nl5jh5v22gqscq9fctn8pqfq2xdqwgzv47lhn" | gpg --encrypt -r RancherStartup --armor`
 4. TODO: Convert to SaltStack formula 
 
-## CentOS 7/8  Image Instructions
-1.  Edit the kickstart file and edit the path to your webserver where you will host RancherStartup
-
-2.  For CentOS 7 and 8 generate a ISO using the command. Ensure the image you are creating is built on the same version of OS you run livemedia-creator on:
-```
-livecd-creator --verbose --config=./kickstart-7.ks --fslabel=Rancher --cache=/var/cache/ 
-```
-
-3.  Put rancherstartup.sh on your web server so that it is accessable
-
-4.  On the rancherstartup.sh file on your webserver, edit the hostname matching, tokens, checksum, and rancher agent version.
-
 ## Fedora CoreOS Image
 1.  Create a butane configuration file and host it on your webserver.  Should include a unit like this:
 ```
