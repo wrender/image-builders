@@ -51,6 +51,9 @@ apt-get install -y \
     bc \
     lsb-release
 
+# Install Kernel Headers
+apt install -y linux-headers-$(uname -r)
+
 # Install Docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo \
