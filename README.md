@@ -1,6 +1,6 @@
 # Image Builders
 
-Simple bash scripts to build Custom OS images for use with Rancher/Kubernetes/SaltStack. A SaltStack formula to configure docker on the nodes after they have booted.
+Bash scripts to build Custom OS images for use with Rancher/Kubernetes/SaltStack. A SaltStack formula to configure docker on the nodes after they have booted.
 
 - Images for [Fedora CoreOS](https://github.com/wrender/image-builders/tree/main/Fedora-CoreOS), [CentOS 7](https://github.com/wrender/image-builders/tree/main/CentOS-7), [CentOS 8 Stream](https://github.com/wrender/image-builders/tree/main/CentOS-8-Stream) and [Ubuntu 20.04](https://github.com/wrender/image-builders/tree/main/Ubuntu-20.04)
 - Images include docker, salt-minion packages
