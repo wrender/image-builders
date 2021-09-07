@@ -1,6 +1,6 @@
 # Download Current pre-built Image
 [CentOS-Stream-8-x86_64-20210902-boot.iso](https://www.otherdata.com/custom-images/CentOS-Stream-8-x86_64-20210902-boot.iso) (docker, salt-minion) | md5sum c471c7846453550dde5d6f214bd0b66b
-# Create a CentOS 7 LiveCD
+# Create a CentOS 8 LiveCD
 - Install a CentOS 8 Stream Minimal on a server or in a VM to build the images on
 - If using a VM, ensure Nested VT-x is enabled
 - Disable SELINUX on CentOS Stream 8
