@@ -24,8 +24,8 @@ repo --name=extras --baseurl="https://ord.mirror.rackspace.com/almalinux/8/extra
 repo --name=powertools --baseurl="https://ord.mirror.rackspace.com/almalinux/8/PowerTools/x86_64/os/"
 # epel repo, use https://mirrors.fedoraproject.org/mirrorlist?repo=epel-8&arch=x86_64 for mirror list
 repo --name=epel --baseurl="https://dl.fedoraproject.org/pub/epel/8/Everything/x86_64/"
-## elrepo use https://mirrors.elrepo.org/mirrors-elrepo.el8 for mirror list
-#repo --name=elrepo --baseurl="https://mirror.rackspace.com/elrepo/elrepo/el8/x86_64/"
+repo --name="docker" --baseurl=http://download.docker.com/linux/centos/7/x86_64/stable/
+
 
 # Network information
 network --activate --bootproto=dhcp --device=link --onboot=on
@@ -57,6 +57,9 @@ kernel
 # Make sure that DNF doesn't pull in debug kernel to satisfy kmod() requires
 kernel-modules
 kernel-modules-extra
+kernel-devel
+make
+gcc
 memtest86+
 nano
 open-vm-tools
@@ -72,8 +75,28 @@ syslinux
 -gfs2-utils
 # -dracut-config-rescue
 
+# Docker
+docker
+
+
 # no longer in @core since 2018-10, but needed for livesys script
 initscripts
 chkconfig
+
+%end
+
+%post --log=/root/ks-post.log
+# Install SaltStack
+sudo rpm --import https://repo.saltproject.io/py3/redhat/8/x86_64/latest/SALTSTACK-GPG-KEY.pub
+curl -fsSL https://repo.saltproject.io/py3/redhat/8/x86_64/latest.repo | sudo tee /etc/yum.repos.d/salt.repo
+yum install -y salt-minion
+
+# Point to master
+cat <<EOF > /etc/salt/minion.d/settings.conf
+master: my.salt.masterhost
+grains:
+  roles:
+    - k8s
+EOF
 
 %end
