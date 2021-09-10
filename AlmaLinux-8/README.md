@@ -1,5 +1,5 @@
 # Download Current pre-built ISO Image
-[AlmaLinux-8.4-x86_64-minimal-salt-live.iso](https://www.otherdata.com/custom-images/AlmaLinux-8/AlmaLinux-8.4-x86_64-minimal-salt-live.iso) | md5sum c471c7846453550dde5d6f214bd0b66b
+[AlmaLinux-8.4-x86_64-minimal-salt-live.iso](https://www.otherdata.com/custom-images/AlmaLinux-8/AlmaLinux-8.4-x86_64-minimal-salt-live.iso) | md5sum ea70c8602707683c237076c051f7a316
 - docker-ce, and salt-minion installed
 # Download Current pre-built PXE Images
 initrd - [initramfs-4.18.0-305.17.1.el8_4.x86_64.img](https://www.otherdata.com/custom-images/AlmaLinux-8/initramfs-4.18.0-305.17.1.el8_4.x86_64.img) | md5sum 958a3ba0343231e146d181047188edd5
