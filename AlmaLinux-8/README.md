@@ -22,7 +22,7 @@ sudo dnf --enablerepo="powertools" --enablerepo="epel" --enablerepo="elrepo" ins
 dnf module install -y virt;
 ```
 - Git clone image-builders `git clone https://github.com/wrender/image-builders.git`
-- Customize kickstart-8.ks as needed
+- Customize almalinux-8.ks as needed
 - Download the AlmaLinux 8 boot iso from https://mirrors.almalinux.org/isos.html to the image-builders/AlmaLinux-8/ folder
 - Run livecd-creator
 ```
