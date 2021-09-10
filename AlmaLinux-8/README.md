@@ -1,6 +1,6 @@
 # Download Current pre-built Image
 [AlmaLinux-8.4-x86_64-minimal-salt-live.iso](https://www.otherdata.com/custom-images/AlmaLinux-8.4-x86_64-minimal-salt-live.iso) (docker, salt-minion) | md5sum c471c7846453550dde5d6f214bd0b66b
-# Create a CentOS 7 LiveCD
+# Create a AlmaLinux 8 LiveCD
 - Install a AlmaLinux 8 Minimal on a server or in a VM to build the images on
 - If using a VM, ensure Nested VT-x is enabled
 - Disable SELINUX
