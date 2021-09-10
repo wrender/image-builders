@@ -86,6 +86,9 @@ chkconfig
 %end
 
 %post --log=/root/ks-post.log
+# Disable Docker onboot
+systemctl disable docker
+
 # Install SaltStack
 sudo rpm --import https://repo.saltproject.io/py3/redhat/8/x86_64/latest/SALTSTACK-GPG-KEY.pub
 curl -fsSL https://repo.saltproject.io/py3/redhat/8/x86_64/latest.repo | sudo tee /etc/yum.repos.d/salt.repo
