@@ -6,7 +6,7 @@ initrd - [initramfs-4.18.0-305.17.1.el8_4.x86_64.img](https://www.otherdata.com/
 
 vmlinuz - [vmlinuz-4.18.0-305.17.1.el8_4.x86_64](https://www.otherdata.com/custom-images/AlmaLinux-8.4/vmlinuz-4.18.0-305.17.1.el8_4.x86_64) | md5sum 8d97fa8fac40c84ba2a38a1080383016
 
-live-rootfs - [live-rootfs.squashfs.img](https://www.otherdata.com/custom-images/AlmaLinux-8.4/live-rootfs.squashfs.img) | md5sum e471df32409bebcf2c39e9ab16a52aca  live-rootfs.squashfs.img
+live-rootfs - [live-rootfs.squashfs.img](https://www.otherdata.com/custom-images/AlmaLinux-8.4/live-rootfs.squashfs.img) | md5sum e471df32409bebcf2c39e9ab16a52aca
 
 - docker-ce, and salt-minion installed
 # Create a AlmaLinux 8 LiveCD
