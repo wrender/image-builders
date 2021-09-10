@@ -26,7 +26,7 @@ dnf module install -y virt;
 - Download the AlmaLinux 8 boot iso from https://mirrors.almalinux.org/isos.html to the image-builders/AlmaLinux-8/ folder
 - Run livecd-creator
 ```
-cd image-builders/CentOS-8;
+cd image-builders/Almalinux-8;
 livemedia-creator --make-pxe-live --ks almalinux-8.ks --iso-name Almalinux8.4.iso --iso AlmaLinux-8.4-x86_64-minimal.iso
 ```
 - Your iso should be created
