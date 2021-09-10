@@ -60,6 +60,7 @@ kernel-modules-extra
 kernel-devel
 make
 gcc
+almalinux-logos
 memtest86+
 nano
 open-vm-tools
