@@ -8,6 +8,7 @@
 # Create the ISO
 ### Requirements
 - An Ubuntu 20.04 Desktop or Server to run the script on
+- Root login
 ### Steps
 - Download the scripts ubuntu-create-iso.sh and ubuntu-chroot.sh to your Ubuntu desktop or server
 - Edit settings in ubuntu-chroot.sh as needed. (password, salt etc..)
