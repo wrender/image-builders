@@ -31,10 +31,18 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y keyboard-configuration
 
 apt-get install -y \
     sudo \
+    ubuntu-standard \
     casper \
     lupin-casper \
+    discover \
+    laptop-detect \
+    os-prober \
     network-manager \
     resolvconf \
+    net-tools \
+    wireless-tools \
+    wpagui \
+    locales \
     grub-common \
     grub-gfxpayload-lists \
     grub-pc \
@@ -51,9 +59,15 @@ apt-get install -y \
     bc \
     open-vm-tools \
     lsb-release
+    
+# Install Initrd
+apt-get install -y --no-install-recommends linux-generic initramfs-tools
 
 # Install Kernel Headers
 apt install -y linux-headers-$(uname -r)
+
+# Reconfigure resolvconf
+dpkg-reconfigure resolvconf
 
 # Install Docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -79,8 +93,7 @@ grains:
     - k8s
 EOF
 
-# Install Initrd
-apt-get install -y --no-install-recommends linux-generic initramfs-tools
+
 
 # Remove machine-id
 truncate -s 0 /etc/machine-id
