@@ -1,6 +1,6 @@
 # Download Current pre-built ISO Image
 [boot.iso](https://www.otherdata.com/custom-images/AlmaLinux-8/boot.iso) | md5sum 80171124ce52c3718a1bb1453d6f1ae0
-- docker-ce, and salt-minion, open-vm-tools installed
+
 # Download Current pre-built PXE Images
 initrd.img - [initrd.img](https://www.otherdata.com/custom-images/AlmaLinux-8/initrd.img) | md5sum a13972a1e60dc9e7fc95116177060904
 
@@ -8,7 +8,6 @@ vmlinuz - [vmlinuz](https://www.otherdata.com/custom-images/AlmaLinux-8/vmlinuz)
 
 install.img - [live-rootfs.squashfs.img](https://www.otherdata.com/custom-images/AlmaLinux-8/install.img) | md5sum 3f6a3541269926e72e5e9d540d67dd60
 
-- docker-ce, and salt-minion installed
 ### Example iPXE Boot
 ```
 #!ipxe
