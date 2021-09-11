@@ -74,11 +74,3 @@ gpgcheck=0
 metadata_expire=6h
 gpgkey=file:///usr/share/distribution-gpg-keys/fedora/RPM-GPG-KEY-fedora-$releasever-primary
 skip_if_unavailable=False
-
-[fedora-myricom]
-name=Fedora Myricom $releasever - $basearch
-baseurl=http://192.168.1.188/myrepo/
-enabled=1
-gpgcheck=0
-metadata_expire=6h
-skip_if_unavailable=False
