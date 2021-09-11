@@ -24,7 +24,7 @@ repo --name=extras --baseurl="https://ord.mirror.rackspace.com/almalinux/8/extra
 repo --name=powertools --baseurl="https://ord.mirror.rackspace.com/almalinux/8/PowerTools/x86_64/os/"
 # epel repo, use https://mirrors.fedoraproject.org/mirrorlist?repo=epel-8&arch=x86_64 for mirror list
 repo --name=epel --baseurl="https://dl.fedoraproject.org/pub/epel/8/Everything/x86_64/"
-repo --name="docker" --baseurl=http://download.docker.com/linux/centos/7/x86_64/stable/
+repo --name=docker --baseurl="http://download.docker.com/linux/centos/8/x86_64/stable/"
 
 
 # Network information
@@ -64,11 +64,6 @@ almalinux-logos
 memtest86+
 nano
 open-vm-tools
-rsync
-rsyslog
-rsyslog-gnutls
-rsyslog-gssapi
-rsyslog-relp
 shim-x64
 syslinux
 -@dial-up
@@ -77,7 +72,9 @@ syslinux
 # -dracut-config-rescue
 
 # Docker
-docker
+docker-ce
+docker-ce-cli
+containerd.io
 
 
 # no longer in @core since 2018-10, but needed for livesys script
