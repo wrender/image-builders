@@ -20,7 +20,7 @@ initrd --name main ${base}/initrd.img
 boot
 ```
 # Create a AlmaLinux 8 LiveCD
-- Install a AlmaLinux 8 Minimal on a server or in a VM to build the images on
+- Install a AlmaLinux 8 Minimal on a server or in a VM to build the images on. (I tested this using VirtualBox, but had issues. I ended up building the images on baremetal with VT-x enabled in the bios).
 - If using a VM, ensure Nested VT-x is enabled
 - Disable SELINUX
 - Install packages needed:
