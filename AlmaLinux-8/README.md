@@ -42,7 +42,7 @@ dnf module install -y virt;
 ```
 - Git clone image-builders `git clone https://github.com/wrender/image-builders.git`
 - Customize almalinux-8.ks as needed
-- Download the AlmaLinux 8 boot iso from https://mirrors.almalinux.org/isos.html to the image-builders/AlmaLinux-8/ folder
+- Download the AlmaLinux 8 minimal iso from https://mirrors.almalinux.org/isos.html to the image-builders/AlmaLinux-8/ folder
 - Run livecd-creator
 ```
 cd image-builders/Almalinux-8;
