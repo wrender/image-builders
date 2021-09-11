@@ -49,6 +49,7 @@ apt-get install -y \
     gnupg \
     gpg \
     bc \
+    open-vm-tools \
     lsb-release
 
 # Install Kernel Headers
