@@ -6,7 +6,7 @@ initrd.img - [initrd.img](https://www.otherdata.com/custom-images/AlmaLinux-8/in
 
 vmlinuz - [vmlinuz](https://www.otherdata.com/custom-images/AlmaLinux-8/vmlinuz) | md5sum 8d97fa8fac40c84ba2a38a1080383016
 
-install.img - [live-rootfs.squashfs.img](https://www.otherdata.com/custom-images/AlmaLinux-8/install.img) | md5sum 3f6a3541269926e72e5e9d540d67dd60
+install.img - [install.img](https://www.otherdata.com/custom-images/AlmaLinux-8/install.img) | md5sum 3f6a3541269926e72e5e9d540d67dd60
 
 ### Example iPXE Boot
 ```
