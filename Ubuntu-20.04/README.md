@@ -1,5 +1,5 @@
 # Download Current Pre-Built ISO
-[ubuntu-20.04.3-live-server-salt-amd64.iso](https://www.otherdata.com/custom-images/ubuntu-20.04.3-live-server-salt-amd64.iso) (docker, salt-minion) | md5sum: a38c4d7f10d53463d2006e5948b5bf71
+[ubuntu-20.04.3-live-server-salt-amd64.iso](https://www.otherdata.com/custom-images/ubuntu-20.04/ubuntu-20.04.3-live-server-salt-amd64.iso) (docker, salt-minion) | md5sum: c8fa18733dfaa8de49b75fbf2abe2a2d
 
 # Create the ISO
 ### Requirements
