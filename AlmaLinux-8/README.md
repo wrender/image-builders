@@ -1,14 +1,25 @@
 # Download Current pre-built ISO Image
-[AlmaLinux-8.4-x86_64-minimal-salt-live.iso](https://www.otherdata.com/custom-images/AlmaLinux-8/AlmaLinux-8.4-x86_64-minimal-salt-live.iso) | md5sum ea70c8602707683c237076c051f7a316
-- docker-ce, and salt-minion installed
+[boot.iso](https://www.otherdata.com/custom-images/AlmaLinux-8/boot.iso) | md5sum 80171124ce52c3718a1bb1453d6f1ae0
+- docker-ce, and salt-minion, open-vm-tools installed
 # Download Current pre-built PXE Images
-initrd - [initramfs-4.18.0-305.17.1.el8_4.x86_64.img](https://www.otherdata.com/custom-images/AlmaLinux-8/initramfs-4.18.0-305.17.1.el8_4.x86_64.img) | md5sum 958a3ba0343231e146d181047188edd5
+initrd.img - [initrd.img](https://www.otherdata.com/custom-images/AlmaLinux-8/initrd.img) | md5sum a13972a1e60dc9e7fc95116177060904
 
-vmlinuz - [vmlinuz-4.18.0-305.17.1.el8_4.x86_64](https://www.otherdata.com/custom-images/AlmaLinux-8/vmlinuz-4.18.0-305.17.1.el8_4.x86_64) | md5sum 8d97fa8fac40c84ba2a38a1080383016
+vmlinuz - [vmlinuz](https://www.otherdata.com/custom-images/AlmaLinux-8/vmlinuz) | md5sum 8d97fa8fac40c84ba2a38a1080383016
 
-live-rootfs - [live-rootfs.squashfs.img](https://www.otherdata.com/custom-images/AlmaLinux-8/live-rootfs.squashfs.img) | md5sum e471df32409bebcf2c39e9ab16a52aca
+install.img - [live-rootfs.squashfs.img](https://www.otherdata.com/custom-images/AlmaLinux-8/install.img) | md5sum 3f6a3541269926e72e5e9d540d67dd60
 
 - docker-ce, and salt-minion installed
+### Example iPXE Boot
+```
+#!ipxe
+
+set base http://192.162.1.142/tftp
+
+kernel ${base}/vmlinuz initrd=main root=live:http://192.162.1.142/tftp/install.img
+initrd --name main ${base}/initrd.img
+
+boot
+```
 # Create a AlmaLinux 8 LiveCD
 - Install a AlmaLinux 8 Minimal on a server or in a VM to build the images on
 - If using a VM, ensure Nested VT-x is enabled
