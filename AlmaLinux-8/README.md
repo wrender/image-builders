@@ -47,6 +47,6 @@ dnf module install -y virt;
 - Run livecd-creator
 ```
 cd image-builders/Almalinux-8;
-livemedia-creator --make-iso --ks almalinux-8.ks --iso-name Almalinux8.4.iso --iso AlmaLinux-8.4-x86_64-minimal.iso
+livemedia-creator --make-iso --ks almalinux-8.ks --iso AlmaLinux-8.4-x86_64-minimal.iso
 ```
-- Your iso should be created
+- Your iso and initrd, vmlinuz should be created in /var/tmp/
