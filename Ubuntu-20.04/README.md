@@ -1,5 +1,9 @@
-# Download Current Pre-Built ISO
+# Download Current Pre-Built ISO/PXE Boot
 [ubuntu-20.04.3-live-server-salt-amd64.iso](https://www.otherdata.com/custom-images/ubuntu-20.04/ubuntu-20.04.3-live-server-salt-amd64.iso) (docker, salt-minion) | md5sum: c8fa18733dfaa8de49b75fbf2abe2a2d
+
+[vmlinuz](https://www.otherdata.com/custom-images/ubuntu-20.04/vmlinuz) | md5sum: 61cab857f0a4ce067a709b4bae10cea0
+
+[initrd](https://www.otherdata.com/custom-images/ubuntu-20.04/initrd) | md5sum: 914212ba6cb0988790edfae274fdb9bb
 
 # Create the ISO
 ### Requirements
