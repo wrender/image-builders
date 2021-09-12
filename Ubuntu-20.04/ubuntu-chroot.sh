@@ -32,16 +32,13 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y keyboard-configuration
 apt-get install -y \
     sudo \
     ubuntu-standard \
+    nano \
     casper \
     lupin-casper \
     discover \
-    laptop-detect \
-    os-prober \
     network-manager \
     resolvconf \
     net-tools \
-    wireless-tools \
-    wpagui \
     locales \
     grub-common \
     grub-gfxpayload-lists \

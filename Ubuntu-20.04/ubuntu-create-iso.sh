@@ -14,6 +14,7 @@ apt-get install -y \
     isolinux \
 
 mkdir $HOME/ubuntu-custom
+wget https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-live-server-amd64.iso -P $HOME/ubuntu-custom/
 
 # Checkout bootstrap
 debootstrap \
@@ -76,6 +77,12 @@ sed -i '/casper/d' image/casper/filesystem.manifest-desktop
 sed -i '/discover/d' image/casper/filesystem.manifest-desktop
 sed -i '/laptop-detect/d' image/casper/filesystem.manifest-desktop
 sed -i '/os-prober/d' image/casper/filesystem.manifest-desktop
+
+# Get .disk hidden folder
+mkdir $HOME/ubuntu-custom/tmpmnt
+mount -o loop $HOME/ubuntu-custom/ubuntu-20.04.3-live-server-amd64.iso $HOME/ubuntu-custom/tmpmnt
+cp -rp $HOME/ubuntu-custom/tmpmnt/.disk $HOME/ubuntu-custom/image/
+umount $HOME/ubuntu-custom/tmpmnt
 
 # Compress the chroot
 cd $HOME/ubuntu-custom
