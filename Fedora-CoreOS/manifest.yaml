@@ -2,12 +2,6 @@ ref: otherdata/${basearch}/coreos/stable
 include: fedora-coreos-config/manifest.yaml
 
 packages:
-- hdparm
-- kernel-devel
-- gcc
-- make
-- tar
-- wget
 - salt-minion
 - open-vm-tools
 
