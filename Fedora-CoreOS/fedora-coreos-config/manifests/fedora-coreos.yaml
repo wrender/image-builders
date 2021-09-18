@@ -94,7 +94,7 @@ exclude-packages:
     #  - python3-libs
   - perl
   - nodejs
-  - dnf
+    #  - dnf
   - grubby
   - cowsay  # Just in case
   # Let's make sure initscripts doesn't get pulled back in
