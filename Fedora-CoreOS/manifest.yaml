@@ -2,7 +2,6 @@ ref: otherdata/${basearch}/coreos/stable
 include: fedora-coreos-config/manifest.yaml
 
 packages:
-- python3
 - salt-minion
 - open-vm-tools
 
