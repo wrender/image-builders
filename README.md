@@ -7,8 +7,8 @@ A SaltStack formula to configure docker on the nodes after they have booted.
 - Images for [Fedora CoreOS](https://github.com/wrender/image-builders/tree/main/Fedora-CoreOS), [CentOS 7](https://github.com/wrender/image-builders/tree/main/CentOS-7), [AlmaLinux 8](https://github.com/wrender/image-builders/tree/main/AlmaLinux-8) and [Ubuntu 20.04](https://github.com/wrender/image-builders/tree/main/Ubuntu-20.04)
 - Images include docker-ce, salt-minion,open-vm-tools packages
 - LiveOS and Persistant
-- Salt-minion systemd service is disabled by default
-- Docker systemd service is disabled by default (to be configured by SaltStack)
+- Salt-minion systemd enabled by default
+- Docker systemd (to be configured by SaltStack)
 - rke-docker SaltStack Formula - Support Docker LiveOS/RAMDISK, Supports RKE
 
 ## Rancher-startup.sh
