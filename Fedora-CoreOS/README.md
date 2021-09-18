@@ -1,7 +1,13 @@
 # Custom Spin of Fedora CoreOS
-Includes:
+##### Includes:
 - salt-minion
 - open-vm-tools
+
+##### Prerequisites
+- Baremetal or VMs
+- iPXE or CDROM ISO Boot setup (See: https://docs.fedoraproject.org/en-US/fedora-coreos/live-booting-ipxe/ )
+- Fedora Butane Ignition Configuration: (See: https://docs.fedoraproject.org/en-US/fedora-coreos/producing-ign/ )
+- SaltStack Master (Optional)
 
 ### PXE Boot Images
 [fedora-coreos-34.20210918.dev.0-live-initramfs.x86_64.img](https://www.otherdata.com/custom-images/Fedora-CoreOS-34/fedora-coreos-34.20210918.dev.0-live-initramfs.x86_64.img)
