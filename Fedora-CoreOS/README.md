@@ -1,9 +1,9 @@
 # Custom Spin of Fedora CoreOS
-##### Includes:
+#### Includes:
 - salt-minion
 - open-vm-tools
 
-##### Prerequisites
+#### Prerequisites
 - Baremetal or VMs
 - iPXE or CDROM ISO Boot setup (See: https://docs.fedoraproject.org/en-US/fedora-coreos/live-booting-ipxe/ )
 - Fedora Butane Ignition Configuration: (See: https://docs.fedoraproject.org/en-US/fedora-coreos/producing-ign/ )
