@@ -1,4 +1,0 @@
-[submodule "Fedora-CoreOS/fedora-coreos-config"]
-	path = Fedora-CoreOS/fedora-coreos-config
-	url = https://github.com/coreos/fedora-coreos-config.git
-	branch = stable
