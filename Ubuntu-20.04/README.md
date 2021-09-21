@@ -33,7 +33,7 @@ initrd ${base}/initrd
 boot
 ```
 
-# Option 2 - Download, Extract, Edit, and Recreate the ISO
+# Download, Extract, Edit, and Recreate the ISO
 
 Download the ISO from the link above.
 
