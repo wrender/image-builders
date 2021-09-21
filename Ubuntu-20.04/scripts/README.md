@@ -1,62 +1,28 @@
-# Download Current Pre-Built ISO
-[ubuntu-20.04.3-live-server-salt-amd64.iso](https://www.otherdata.com/custom-images/ubuntu-20.04.3-live-server-salt-amd64.iso) (docker, salt-minion) | md5sum: a38c4d7f10d53463d2006e5948b5bf71
+# Build Scripts
 
-# Create the ISO
-### Requirements
-- An Ubuntu 20.04 Desktop or Server to run the script on
-### Steps
-- Download the scripts folder
+## build.sh
 
-# Option 2 - Download, Extract, Edit, and Recreate the ISO
-
-Download the ISO from the link above.
-
-## Extract ISO
 ```
-cd tmp;
-xorriso -osirrox on -indev /root/ubuntu-custom/ubuntu-20.04.3-live-server-salt-amd64.iso -extract / /tmp/tmpiso
+This script builds a bootable ubuntu ISO image
+
+Supported commands : setup_host debootstrap run_chroot build_iso
+
+Syntax: ./build.sh [start_cmd] [-] [end_cmd]
+	run from start_cmd to end_end
+	if start_cmd is omitted, start from first command
+	if end_cmd is omitted, end with last command
+	enter single cmd to run the specific command
+	enter '-' as only argument to run all commands
 ```
 
-## Unsquash Filesystem
-```
-unsquashfs -f -d /tmp/tmpunsquash /tmp/tmpiso/casper/filesystem.squashfs
-```
+## How to Customize
 
-## Edit Salt Master Settings
-```
-vim /tmp/tmpunsquash/etc/salt/minion.d/settings.conf
-```
-## Resquash Filesytem
-```
-rm -rf /tmp/tmpiso/casper/filesystem.squashfs
-mksquashfs /tmp/tmpunsquash /tmp/tmpiso/casper/filesystem.squashfs
-```
+1. Copy the `default_config.sh` file to `config.sh` in the scripts directory.
+2. Make any necessary edits there, the script will pick up `config.sh` over `default_config.sh`.
 
-## Re-Create ISO
-```
-cd /tmp/tmpiso;
-xorriso \
-   -as mkisofs \
-   -iso-level 3 \
-   -full-iso9660-filenames \
-   -volid "Ubuntu Custom" \
-   -output "../ubuntu-20.04.3-live-server-salt-amd64.iso" \
-   -eltorito-boot boot/grub/bios.img \
-      -no-emul-boot \
-      -boot-load-size 4 \
-      -boot-info-table \
-      --eltorito-catalog boot/grub/boot.cat \
-      --grub2-boot-info \
-      --grub2-mbr /usr/lib/grub/i386-pc/boot_hybrid.img \
-   -eltorito-alt-boot \
-      -e EFI/efiboot.img \
-      -no-emul-boot \
-   -append_partition 2 0xef EFI/efiboot.img \
-   -m "EFI/efiboot.img" \
-   -m "EFI/bios.img" \
-   -graft-points \
-      "/EFI/efiboot.img=EFI/efiboot.img" \
-      "/boot/grub/bios.img=boot/grub/bios.img" \
-      "."
-```
-## New bootable iso should be available in /tmp/
+## How to Update
+
+The configuration script is versioned with the variable CONFIG_FILE_VERSION.  Any time that the configuration
+format is changed in `default_config.sh`, this value is bumped.  Once this happens `config.sh` must be updated manually
+from the default file to ensure the new/changed variables are as desired.  Once the merge is complete the `config.sh` file's
+CONFIG_FILE_VERSION should match the default and the build will run.
