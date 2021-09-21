@@ -5,6 +5,9 @@ set -o pipefail         # exit on pipeline error
 set -u                  # treat unset variable as error
 #set -x
 
+# Non Interactive
+DEBIAN_FRONTEND=noninteractive
+
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
 CMD=(setup_host install_pkg finish_up)
@@ -111,7 +114,15 @@ function install_pkg() {
     grub-pc \
     grub-pc-bin \
     grub2-common \
-    locales
+    locales 
+
+    # Configure timezone and locale. Adjust for your needs.
+    echo "Etc/UTC" > /etc/timezone && \
+    dpkg-reconfigure -f noninteractive tzdata && \
+    sed -i -e 's/# en_CA.UTF-8 UTF-8/en_CA.UTF-8 UTF-8/' /etc/locale.gen && \
+    echo 'LANG="en_CA.UTF-8"'>/etc/default/locale && \
+    dpkg-reconfigure --frontend=noninteractive locales && \
+    update-locale LANG=en_CA.UTF-8
     
     # install kernel
     apt-get install -y --no-install-recommends $TARGET_KERNEL_PACKAGE
@@ -122,22 +133,7 @@ function install_pkg() {
     # remove unused and clean up apt cache
     apt-get autoremove -y
 
-    # final touch
-    dpkg-reconfigure locales
     dpkg-reconfigure resolvconf
-
-    # network manager
-    cat <<EOF > /etc/NetworkManager/NetworkManager.conf
-[main]
-rc-manager=resolvconf
-plugins=ifupdown,keyfile
-dns=dnsmasq
-
-[ifupdown]
-managed=false
-EOF
-
-    dpkg-reconfigure network-manager
 
     apt-get clean -y
 
