@@ -167,16 +167,6 @@ menuentry "${GRUB_LIVEBOOT_LABEL}" {
    initrd /casper/initrd
 }
 
-menuentry "${GRUB_INSTALL_LABEL}" {
-   linux /casper/vmlinuz boot=casper only-ubiquity quiet splash ---
-   initrd /casper/initrd
-}
-
-menuentry "Check disc for defects" {
-   linux /casper/vmlinuz boot=casper integrity-check quiet splash ---
-   initrd /casper/initrd
-}
-
 EOF
 
     # generate manifest

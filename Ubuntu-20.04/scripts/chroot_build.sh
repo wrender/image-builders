@@ -101,11 +101,9 @@ function install_pkg() {
     # install live packages
     apt-get install -y \
     sudo \
-    ubuntu-minimal \
     casper \
     lupin-casper \
     discover \
-    os-prober \
     network-manager \
     resolvconf \
     grub-common \
@@ -117,11 +115,6 @@ function install_pkg() {
     
     # install kernel
     apt-get install -y --no-install-recommends $TARGET_KERNEL_PACKAGE
-
-    # graphic installer - ubiquity
-    apt-get install -y \
-    ubiquity \
-    ubiquity-casper \
 
     # Call into config function
     customize_image
