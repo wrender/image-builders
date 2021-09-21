@@ -5,9 +5,33 @@
 ### Requirements
 - An Ubuntu 20.04 Desktop or Server to run the script on
 ### Steps
-- Download the scripts ubuntu-create-iso.sh and ubuntu-chroot.sh to your Ubuntu desktop or server
+- Git clone this project, and cd into Ubuntu-20.04/scripts/
 - Edit settings in ubuntu-chroot.sh as needed. (password, salt etc..)
-- Run the script ubuntu-create-iso.sh
+- Run the script build.sh
+
+# Example iPXE Boot
+### Persistance
+```
+#!ipxe
+
+set base http://192.168.1.142/tftp/
+
+kernel ${base}/vmlinuz initrd=initrd ip=dhcp boot=casper only-ubiquity url=http://192.168.1.142/tftp/ubuntu-20.04.3-live-salt-x64.iso autoinstall ds="nocloud-net;s=http://192.168.1.142/tftp/" root=/dev/ram0 cloud-config-url=http://192.168.1.142/tftp/user-data ramdisk_size=1500000
+initrd ${base}/initrd
+
+boot
+```
+### No Persistance
+```
+#!ipxe
+
+set base http://192.168.1.142/tftp/
+
+kernel ${base}/vmlinuz initrd=initrd ip=dhcp boot=casper nopersistent toram url=http://192.168.1.142/tftp/ubuntu-20.04.3-live-salt-x64.iso
+initrd ${base}/initrd
+
+boot
+```
 
 # Option 2 - Download, Extract, Edit, and Recreate the ISO
 
