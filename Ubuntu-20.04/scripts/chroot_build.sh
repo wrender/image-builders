@@ -133,8 +133,6 @@ function install_pkg() {
     # remove unused and clean up apt cache
     apt-get autoremove -y
 
-    dpkg-reconfigure resolvconf
-
     apt-get clean -y
 
     # Install Docker
