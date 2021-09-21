@@ -104,11 +104,13 @@ function install_pkg() {
     # install live packages
     apt-get install -y \
     sudo \
+    ubuntu-minimal \
     casper \
     lupin-casper \
     discover \
     network-manager \
     resolvconf \
+    net-tools \
     grub-common \
     grub-gfxpayload-lists \
     grub-pc \
