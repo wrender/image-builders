@@ -5,8 +5,6 @@ set -o pipefail         # exit on pipeline error
 set -u                  # treat unset variable as error
 #set -x
 
-# Non Interactive
-DEBIAN_FRONTEND=noninteractive
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
@@ -102,7 +100,7 @@ function install_pkg() {
     apt-get -y upgrade
 
     # install live packages
-    apt-get install -y \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
     sudo \
     ubuntu-minimal \
     casper \

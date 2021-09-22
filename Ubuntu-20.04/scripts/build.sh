@@ -9,6 +9,9 @@ SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
 CMD=(setup_host debootstrap run_chroot build_iso)
 
+# Non Interactive
+DEBIAN_FRONTEND=noninteractive
+
 DATE=`TZ="UTC" date +"%y%m%d-%H%M%S"`
 
 function help() {
