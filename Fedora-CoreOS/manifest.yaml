@@ -3,7 +3,6 @@ include: fedora-coreos-config/manifest.yaml
 
 packages:
 - salt-minion
-- open-vm-tools
 
 repos:
 - fedora
