@@ -1,88 +1,57 @@
-# Download Current Pre-Built ISO
-[ubuntu-20.04.3-live-salt-x64.iso](https://www.otherdata.com/custom-images/Ubuntu-20.04/ubuntu-20.04.3-live-salt-x64.iso) (docker, salt-minion) | md5sum: 9d6a54e4bc271bab7dcc52423d84cace
-
-# Create the ISO
-### Requirements
-- An Ubuntu 20.04 Desktop or Server to run the script on
-### Steps
-- Git clone this project, and cd into Ubuntu-20.04/scripts/
-- Edit settings in ubuntu-chroot.sh as needed. (password, salt etc..)
-- Run the script build.sh
-
-# Example iPXE Boot
-### Persistance
+1. Create an ipxe chain loading boot file. Point it to a ipxe boot file on an internal http server. Create a boot file with something like:
 ```
 #!ipxe
 
-set base http://192.168.1.142/tftp/
+set base http://192.168.1.142/tftp/ltsp/
 
-kernel ${base}/vmlinuz initrd=initrd ip=dhcp boot=casper only-ubiquity url=http://192.168.1.142/tftp/ubuntu-20.04.3-live-salt-x64.iso autoinstall ds="nocloud-net;s=http://192.168.1.142/tftp/" root=/dev/ram0 cloud-config-url=http://192.168.1.142/tftp/user-data ramdisk_size=1500000
-initrd ${base}/initrd
+# The "images" method can boot anything in /srv/ltsp/images
+set cmdline_method root=/dev/nfs nfsroot=192.168.1.226:/srv/ltsp ltsp.image=images/focal.img loop.max_part=9
 
-boot
-```
-### No Persistance
-```
-#!ipxe
-
-set base http://192.168.1.142/tftp/
-
-kernel ${base}/vmlinuz initrd=initrd ip=dhcp boot=casper nopersistent toram url=http://192.168.1.142/tftp/ubuntu-20.04.3-live-salt-x64.iso
-initrd ${base}/initrd
+set cmdline ${cmdline_method}
+# In EFI mode, iPXE requires initrds to be specified in the cmdline
+kernel ${base}vmlinuz initrd=ltsp.img initrd=initrd.img ${cmdline}
+initrd ${base}ltsp.img
+initrd ${base}initrd.img
 
 boot
+
 ```
 
-# Download, Extract, Edit, and Recreate the ISO
+2. Install and Ubuntu 20.04 Server, and then install ltsp and ltsp-binaries
+```
+apt install -y --install-recommends ltsp ltsp-binaries openssh-server squashfs-tools ethtool net-tools
+```
+3. Follow the directions at https://github.com/ltsp/ltsp/wiki/chroots and create a chroot environment
 
-Download the ISO from the link above.
+4. Copy the ltsp config file into place:  `install -m 0660 -g sudo /usr/share/ltsp/common/ltsp/ltsp.conf /etc/ltsp/ltsp.conf`
 
-## Extract ISO
+5. Edit /etc/ltsp/ltsp.conf and add IMAGE_TO_RAM=1 and set a root password if needed:
 ```
-cd tmp;
-xorriso -osirrox on -indev /root/ubuntu-custom/ubuntu-20.04.3-live-server-salt-amd64.iso -extract / /tmp/tmpiso
-```
+[clients]
+# Allow local root logins by setting a password hash for the root user.
+# The hash contains $, making it hard to escape in POST_INIT_x="sed ...".
+# So put sed in a section and call it at POST_INIT like this:
+POST_INIT_SET_ROOT_HASH="section_set_root_hash"
 
-## Unsquash Filesystem
-```
-unsquashfs -f -d /tmp/tmpunsquash /tmp/tmpiso/casper/filesystem.squashfs
-```
+# This is the hash of "qwer1234"; cat /etc/shadow to see your hash.
+[set_root_hash]
+sed 's|^root:[^:]*:|root:$6$VRfFL349App5$BfxBbLE.tYInJfeqyGTv2lbk6KOza3L2AMpQz7bMuCdb3ZsJacl9Nra7F/Zm7WZJbnK5kvK74Ik9WO2qGietM0:|' -i /etc/shadow
 
-## Edit Salt Master Settings
+IMAGE_TO_RAM=1
 ```
-vim /tmp/tmpunsquash/etc/salt/minion.d/settings.conf
-```
-## Resquash Filesytem
-```
-rm -rf /tmp/tmpiso/casper/filesystem.squashfs
-mksquashfs /tmp/tmpunsquash /tmp/tmpiso/casper/filesystem.squashfs
-```
+6. Generate the images with `ltsp image focal` (This creates an image based on /srv/ltsp/focal)
 
-## Re-Create ISO
+7. Run `ltsp intrd` to generate the ltsp.img.
+
+8. Copy the initrd.img, vmlinuz, focal.img, and ltsp.img to your internal web server. For example: http://192.168.1.142/tftp/ltsp/
+
+9. Copy the files in /srv/ltsp  to your NFS server. Example: 192.168.1.226:/srv/ltsp
+
+10. Create exports with something similar to:
 ```
-cd /tmp/tmpiso;
-xorriso \
-   -as mkisofs \
-   -iso-level 3 \
-   -full-iso9660-filenames \
-   -volid "Ubuntu Custom" \
-   -output "../ubuntu-20.04.3-live-server-salt-amd64.iso" \
-   -eltorito-boot boot/grub/bios.img \
-      -no-emul-boot \
-      -boot-load-size 4 \
-      -boot-info-table \
-      --eltorito-catalog boot/grub/boot.cat \
-      --grub2-boot-info \
-      --grub2-mbr /usr/lib/grub/i386-pc/boot_hybrid.img \
-   -eltorito-alt-boot \
-      -e EFI/efiboot.img \
-      -no-emul-boot \
-   -append_partition 2 0xef EFI/efiboot.img \
-   -m "EFI/efiboot.img" \
-   -m "EFI/bios.img" \
-   -graft-points \
-      "/EFI/efiboot.img=EFI/efiboot.img" \
-      "/boot/grub/bios.img=boot/grub/bios.img" \
-      "."
+# Export LTSP chroots and images
+/srv/ltsp       *(ro,async,crossmnt,no_subtree_check,no_root_squash,insecure)
+
+# Export TFTP_DIR over NFS as well, for synching local kernels and ltsp.img
+/srv/tftp/ltsp  *(ro,async,crossmnt,no_subtree_check,no_root_squash,insecure)
 ```
-## New bootable iso should be available in /tmp/
