@@ -4,7 +4,7 @@ Bash scripts to build Minimal Custom OS images for use with Rancher/Kubernetes/S
 
 A SaltStack formula to configure docker on the nodes after they have booted.
 
-- Images for [Fedora CoreOS](https://github.com/wrender/image-builders/tree/main/Fedora-CoreOS), [CentOS 7](https://github.com/wrender/image-builders/tree/main/CentOS-7), [AlmaLinux 8](https://github.com/wrender/image-builders/tree/main/AlmaLinux-8) and [Ubuntu 20.04](https://github.com/wrender/image-builders/tree/main/Ubuntu-20.04)
+- Images for [Fedora CoreOS](https://github.com/wrender/image-builders/tree/main/Fedora-CoreOS), [CentOS 7](https://github.com/wrender/image-builders/tree/main/CentOS-7), [AlmaLinux 8](https://github.com/wrender/image-builders/tree/main/AlmaLinux-8), [RockyLinux 8]((https://github.com/wrender/image-builders/tree/main/RockyLinux-8) and [Ubuntu 20.04](https://github.com/wrender/image-builders/tree/main/Ubuntu-20.04)
 - Images include docker-ce, salt-minion,open-vm-tools packages
 - LiveOS and Persistant
 - Salt-minion systemd enabled by default
