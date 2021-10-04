@@ -1,5 +1,5 @@
 # Download Current pre-built ISO Image
-[boot.iso](https://www.otherdata.com/custom-images/RockyLinux-8/boot.iso) | md5sum 80171124ce52c3718a1bb1453d6f1ae0
+[boot.iso](https://www.otherdata.com/custom-images/RockyLinux-8/rockylinux.tar.gz) | md5sum 2362a5bbd7213a50f3b51a540913602a
 
 # Download Current pre-built PXE Images
 initrd.img - [initrd.img](https://www.otherdata.com/custom-images/RockyLinux-8/initrd.img) | md5sum a13972a1e60dc9e7fc95116177060904
